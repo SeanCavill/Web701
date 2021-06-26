@@ -1,0 +1,36 @@
+<div class="container">
+  <header class="jumbotron" style="text-align: center;">
+    <h1>Home Page</h1>
+  </header>
+</div>
+  <div class="container-fluid" style="text-align: center;">
+
+    <h1>Welcome to Helping Animals Nelson</h1>
+    
+    <!--The carousel which gets each item in the array and displays it's properties.-->
+    <ngb-carousel>
+    
+      <ng-template ngbSlide *ngFor="let image of images">
+    
+        <div class="wrapper">
+          
+          <img [src]="image.src" alt="Random first slide">
+          
+        </div>
+        <a routerLink="/{{image.link}}">
+        <div class="carousel-caption">
+          
+          <h3>{{ image.title }}</h3>
+    
+          <p>{{ image.short }}</p>
+        
+        </div>
+      </a>
+      </ng-template>
+    
+    </ngb-carousel>
+    
+        
+
+</div>
+  
