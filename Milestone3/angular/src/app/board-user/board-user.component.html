@@ -1,0 +1,60 @@
+<div class="container">
+  <header class="jumbotron" style="text-align: center;">
+    <h1  class="mg-bottom">Animals Availibile for Adoption</h1>   
+    <p>{{ content }}</p>
+  </header>
+
+  <div class="content" *ngIf="isGridView">
+    <div class="row">
+
+      <!--html for showing all the animals using cards-->
+      <div *ngFor="let animal of arrayOfAnimals" class="col-md-4">      
+
+        <div class="card-deck mt-4">
+          <div class="card text-center">
+            <div class="card-block">
+              <h4 class="card-title">{{animal.animalName}}</h4>
+              <p class="card-text">
+              {{animal.species}}
+              </p>
+            </div>
+            <div class="card-footer">
+            <button class="btn btn-primary" (click)="openAnimal(animal._id)">More Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+
+  <!--if an animal has been selected the grid view is disables and this displays one more detailed card-->
+  <div class="card-deck mt-8" *ngIf="!isGridView">
+    <div class="card text-center">
+      <div class="card-block">
+        <div *ngFor="let animal of focusedAnimal">   
+          <h4 class="card-title">{{animal.animalName}}</h4>
+            <p class="card-text">
+              <strong>ListerId:</strong>
+              {{animal.lister}}
+              <br>
+              <strong>Species:</strong>
+              {{animal.species}}
+              <br>          
+              <strong>Description:</strong>
+              {{animal.description}}
+            </p>
+            <div class="card-footer">
+              <button class="btn btn-primary" (click)="adoptAnimal(animal._id)">Adopt(-1 token)</button>
+              <button class="btn btn-danger" (click)="reloadPage()">Close</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="adoptFailed">
+            Adoption Failed: {{ errorMessage }}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div> 

@@ -1,0 +1,17 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+    <a routerLink="/login"><button class="btn btn-primary btn-block" > Login </button></a>
+  </header>
+
+  <!--Button that allows user to claim tokens-->
+  <div *ngIf="hasAccess">
+    <h3>Tokens are limited. Beneficiaries can grab a new token every minute</h3>
+    <button class="btn btn-primary" (click)="claimToken()">Claim Free Token</button>
+    <div class="alert alert-warning" *ngIf="claimFailed">
+      Claiming Free Token Failed: {{ errorMessage }}
+      
+    </div>
+  </div>
+
+</div>
